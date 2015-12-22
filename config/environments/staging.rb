@@ -68,7 +68,7 @@ Kassi::Application.configure do
   config.serve_static_assets = APP_CONFIG.serve_static_assets_in_production || false
 
   # Compress JavaScript and CSS
-  config.assets.compress = true
+  config.assets.js_compressor = :uglifier
 
   # Don't fallback to assets pipeline
   config.assets.compile = false
