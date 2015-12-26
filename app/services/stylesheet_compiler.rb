@@ -41,6 +41,14 @@ module StylesheetCompiler
           include Sprockets::Helpers::RailsHelper
           include Sprockets::Helpers::IsolatedHelper
 
+          def config
+            ActiveSupport::OrderedOptions.new.tap do |s|
+              Maybe(APP_CONFIG.asset_host).each { |asset_host|
+                s.asset_host = asset_host
+              }
+            end
+          end
+
           def sass_config
             ActiveSupport::OrderedOptions.new.tap do |s|
               compass = Compass::Frameworks['compass']
